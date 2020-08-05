@@ -128,8 +128,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLapReset.setEnabled(true);
         btnLapReset.setText(getResources().getString(R.string.lap));
 
-        MainActivity.isStart = true;
-        startStopwatchThread();
+        // jika state kondisi false atau pause, untuk menghindari start yang berulang" jika user menekan tombol start
+        if (!MainActivity.isStart) {
+            MainActivity.isStart = true;
+            startStopwatchThread();
+        }
     }
 
     private void lapResetStopwatch() {
