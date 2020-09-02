@@ -69,11 +69,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 while (running) {
                     delay(10)
 
-                    val second = (increment / 90) % 60
+                    // cast anyone to double to get result double
+                    val second = (increment / 90.0) % 60
                     val progress = (second / 60) * 100
 
                     withContext(Main) {
-                        sa_time.progress = progress
+                        sa_time.progress = progress.toInt()
                         btn_time.text = Lap.convertToDuration(increment)
                     }
 
